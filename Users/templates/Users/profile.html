@@ -11,15 +11,15 @@
 
             <div class="profile-details">
                 <div class="profile-row">
-                    <span class="profile-label">Username:</span>
+                    <span class="profile-label">Foydalanuvchi nomi:</span>
                     <span class="profile-info">{{ user.username }}</span>
                 </div>
                 <div class="profile-row">
-                    <span class="profile-label">First name:</span>
+                    <span class="profile-label">Ism:</span>
                     <span class="profile-info">{{ user.first_name }}</span>
                 </div>
                 <div class="profile-row">
-                    <span class="profile-label">Last name:</span>
+                    <span class="profile-label">Familiya:</span>
                     <span class="profile-info">{{ user.last_name }}</span>
                 </div>
                 <div class="profile-row">
@@ -27,13 +27,13 @@
                     <span class="profile-info">{{ user.email }}</span>
                 </div>
                 <div class="profile-row">
-                    <span class="profile-label">Phone:</span>
+                    <span class="profile-label">Telefon raqam:</span>
                     <span class="profile-info">{{ user.phone_number }}</span>
                 </div>
             </div>
 
             <a href="{% url 'users:profile_update' %}">
-                <button class="btn btn-edit">Edit Profile</button>
+                <button class="btn btn-edit">Ma'lumotlarni tahrirlash</button>
             </a>
         </div>
     </div>
@@ -48,7 +48,7 @@
 <style>
     body {
         background: linear-gradient(to right, rgba(0, 128, 255, 0.1), rgba(0, 255, 255, 0.1));
-        font-family: 'Arial', sans-serif;
+        font-family: 'Times New Roman', sans-serif;
     }
 
     .profile-container {
