@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5 text-center text-white">
+    <h5 class="display-5 font-weight-bold mb-4 fade-in" style="animation-delay: 0s;">
+        Zamonaviy jamiyatda axborot oqimi tezkor va keng qamrovli bo‘lib, u insonlarning qarashlari, qaror qabul qilish jarayonlari va kundalik hayotiga bevosita ta’sir ko‘rsatadi.
+    </h5>
+
+    <div class="row justify-content-center fade-in" style="animation-delay: 0.5s;">
+        <div class="col-md-8">
+            <p class="lead font-weight-medium">
+                Mediasavodxonlik – bu axborotni tahlil qilish, yolg‘on va haqiqatni ajratish, manipulyatsiyalarga qarshi turish qobiliyatidir.
+            </p>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mt-4 fade-in" style="animation-delay: 1s;">
+        <div class="col-md-8">
+            <p class="lead font-weight-medium">
+                Mediasavodxonlik jamiyatda quyidagi muhim funksiyalarni bajaradi:
+            </p>
+            <ul class="list-unstyled text-lg text-start">
+                <li><i class="fas fa-check-circle text-success"></i> Haqiqiy va ishonchli axborotni ajratishga yordam beradi</li>
+                <li><i class="fas fa-check-circle text-success"></i> Yolg‘on xabarlar va dezinformatsiyaga qarshi immunitet shakllantiradi</li>
+                <li><i class="fas fa-check-circle text-success"></i> Tanqidiy fikrlashni rivojlantirib, mustaqil qaror qabul qilishga ko‘maklashadi</li>
+                <li><i class="fas fa-check-circle text-success"></i> Jamiyatda ishonch va barqarorlikni ta’minlaydi</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mt-4 fade-in" style="animation-delay: 1.5s;">
+        <div class="col-md-8">
+            <p class="lead text-md">
+                Bugungi kunda raqamli axborot muhitida to‘g‘ri va xolis axborotni tanlash har qachongidan ham muhim.
+                Shu bois, har bir inson mediasavodxonlik ko‘nikmalarini rivojlantirishi, ishonchli manbalarga tayanishi va axborotga ongli yondashishi lozim.
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<style>
+    body {
+        background: linear-gradient(to right, #1e3c72, #2a5298),
+                    url('https://www.transparenttextures.com/patterns/circles.png');
+        background-size: cover;
+        background-attachment: fixed;
+        color: white;
+    }
+
+    .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 1s ease-in-out forwards;
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .display-5 { font-size: 2.5rem; }
+    .lead { font-size: 1.3rem; }
+    .text-lg { font-size: 1.2rem; }
+    .text-md { font-size: 1.15rem; }
+
+    {% if not user.is_authenticated %}
+        .navbar .profile, .navbar .logout { display: none; }
+    {% endif %}
+</style>
+{% endblock extra_head %}

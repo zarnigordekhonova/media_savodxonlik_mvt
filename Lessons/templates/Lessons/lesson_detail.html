@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-4">
+    <h2 class="text-center"><b>{{ lesson.title }}</b></h2>
+
+    <div style="display: flex; justify-content: center;">
+        <video id="lessonVideo" width="80%" controls>
+            <source src="{{ lesson.video.url }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <div class="mt-3">
+        <a id="testLink" href="{{ lesson.test_url }}" class="btn btn-primary disabled">Testni boshlash</a>
+    </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    let video = document.getElementById("lessonVideo");
+    let testLink = document.getElementById("testLink");
+
+    let watched = {{ progress.watched|lower }};
+
+    if (watched) {
+        testLink.classList.remove("disabled");
+    } else {
+        video.addEventListener("ended", function () {
+            fetch("{% url 'lessons:mark_watched' lesson.id %}", {
+                method: "POST",
+                headers: { "X-CSRFToken": "{{ csrf_token }}" },
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    testLink.classList.remove("disabled");
+                }
+            });
+        });
+    }
+});
+</script>
+<style>
+    body {
+        background: linear-gradient(to right, rgba(0, 128, 255, 0.1), rgba(0, 255, 255, 0.1));
+        font-family: 'Times New Roman', sans-serif;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+{% endblock %}
